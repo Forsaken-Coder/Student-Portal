@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" id="themeRoot">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile - Nexor University</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="gradient-bg"></div>
+  <div id="particles-js"></div>
+
+  <!-- Main Container -->
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <i class="fas fa-graduation-cap"></i>
+          <span class="logo-text">Nexor<span class="logo-highlight">Portal</span></span>
+        </div>
+        <div class="user-mini-profile">
+          <div class="mini-avatar" id="miniAvatar">A</div>
+          <div class="mini-info">
+            <span class="mini-name" id="miniName">Ali Ahmed</span>
+            <span class="mini-roll" id="miniRoll">23FA-003-SE</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item" title="Dashboard">
+          <i class="fas fa-chart-pie"></i>
+          <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="registration.html" class="nav-item" title="Registration">
+          <i class="fas fa-book-open"></i>
+          <span class="nav-text">Registration</span>
+        </a>
+        <a href="courses.html" class="nav-item" title="Courses">
+          <i class="fas fa-book"></i>
+          <span class="nav-text">Courses</span>
+        </a>
+        <a href="timetable.html" class="nav-item" title="Schedule">
+          <i class="fas fa-calendar-alt"></i>
+          <span class="nav-text">Schedule</span>
+        </a>
+        <a href="#" class="nav-item" title="Assignments">
+          <i class="fas fa-file-alt"></i>
+          <span class="nav-text">Assignments</span>
+        </a>
+        <a href="#" class="nav-item" title="Performance">
+          <i class="fas fa-chart-line"></i>
+          <span class="nav-text">Performance</span>
+        </a>
+        <a href="#" class="nav-item" title="Finance">
+          <i class="fas fa-university"></i>
+          <span class="nav-text">Finance</span>
+        </a>
+        <a href="profile.html" class="nav-item active" title="Profile">
+          <i class="fas fa-cog"></i>
+          <span class="nav-text">Profile</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="toggleSidebar" class="toggle-btn" title="Collapse Sidebar">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="main-header">
+        <div class="header-left">
+          <button id="mobileToggle" class="mobile-toggle" title="Toggle Menu">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="header-title">
+            <h1>Student Profile</h1>
+            <p class="header-subtitle" id="currentDateTime">Loading...</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="header-actions">
+            <button class="header-btn theme-toggle" id="themeToggle" title="Toggle Theme">
+              <i class="fas fa-moon"></i>
+            </button>
+            
+            <div class="user-dropdown">
+              <div class="user-profile" id="userProfile">
+                <div class="avatar">
+                  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ali" alt="Avatar" id="avatarImage">
+                </div>
+                <div class="user-details">
+                  <span class="user-name" id="userName">Ali Ahmed</span>
+                  <span class="user-role">Student</span>
+                </div>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="dropdown-menu">
+                <a href="/profile"><i class="fas fa-user"></i> My Profile</a>
+                <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                <a href="#"><i class="fas fa-question-circle"></i> Help</a>
+                <div class="dropdown-divider"></div>
+                <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Profile Container -->
+      <div class="profile-container">
+        <!-- Profile Overview Card -->
+        <div class="profile-overview-card">
+          <div class="profile-header">
+            <div class="profile-avatar-section">
+              <div class="avatar-container">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ali" alt="Profile Avatar" id="profileAvatar">
+                <button class="change-avatar-btn" id="changeAvatarBtn" title="Change Avatar">
+                  <i class="fas fa-camera"></i>
+                </button>
+              </div>
+              <div class="profile-info">
+                <h2 id="profileName">Ali Ahmed</h2>
+                <p id="profileRoll">23FA-003-SE</p>
+                <p id="profileDepartment">Software Engineering</p>
+                <p id="profileBatch">Batch 23FA</p>
+              </div>
+            </div>
+            <div class="profile-actions">
+              <button class="edit-profile-btn" id="editProfileBtn">
+                <i class="fas fa-edit"></i>
+                Edit Profile
+              </button>
+            </div>
+          </div>
+          
+          <div class="profile-stats">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <div class="stat-content">
+                <h3>Current Semester</h3>
+                <div class="stat-value" id="profileSemester">4</div>
+              </div>
+            </div>
+            
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="stat-content">
+                <h3>CGPA</h3>
+                <div class="stat-value" id="profileCGPA">3.42</div>
+              </div>
+            </div>
+            
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-trophy"></i>
+              </div>
+              <div class="stat-content">
+                <h3>Class Rank</h3>
+                <div class="stat-value" id="profileRank">12</div>
+              </div>
+            </div>
+            
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="stat-content">
+                <h3>Attendance</h3>
+                <div class="stat-value" id="profileAttendance">92.5%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile Content -->
+        <div class="profile-content">
+          <!-- Personal Information Section -->
+          <div class="profile-section">
+            <div class="section-header">
+              <h3><i class="fas fa-user"></i> Personal Information</h3>
+              <button class="edit-btn" id="editPersonalBtn">
+                <i class="fas fa-edit"></i>
+                Edit
+              </button>
+            </div>
+            <div class="section-content">
+              <div class="info-grid">
+                <div class="info-item">
+                  <label>First Name</label>
+                  <input type="text" id="firstName" value="Ali" disabled>
+                </div>
+                <div class="info-item">
+                  <label>Last Name</label>
+                  <input type="text" id="lastName" value="Ahmed" disabled>
+                </div>
+                <div class="info-item">
+                  <label>Email</label>
+                  <input type="email" id="email" value="23fa-003-se@nexor.edu" disabled>
+                </div>
+                <div class="info-item">
+                  <label>Phone</label>
+                  <input type="tel" id="phone" value="+92 300 1234567" disabled>
+                </div>
+                <div class="info-item">
+                  <label>Date of Birth</label>
+                  <input type="date" id="dateOfBirth" value="2005-06-15" disabled>
+                </div>
+                <div class="info-item">
+                  <label>Gender</label>
+                  <select id="gender" disabled>
+                    <option value="male" selected>Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Academic Information Section -->
+          <div class="profile-section">
+            <div class="section-header">
+              <h3><i class="fas fa-graduation-cap"></i> Academic Information</h3>
+            </div>
+            <div class="section-content">
+              <div class="academic-stats">
+                <div class="academic-stat">
+                  <h4>Total Credits</h4>
+                  <div class="stat-value" id="totalCredits">72</div>
+                </div>
+                <div class="academic-stat">
+                  <h4>Credits Completed</h4>
+                  <div class="stat-value" id="creditsCompleted">54</div>
+                </div>
+                <div class="academic-stat">
+                  <h4>Current Credits</h4>
+                  <div class="stat-value" id="currentCredits">18</div>
+                </div>
+                <div class="academic-stat">
+                  <h4>Expected Graduation</h4>
+                  <div class="stat-value" id="expectedGraduation">Spring 2026</div>
+                </div>
+              </div>
+              
+              <div class="academic-history">
+                <h4>Academic History</h4>
+                <div class="history-list" id="academicHistory">
+                  <!-- Will be populated dynamically -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Settings Section -->
+          <div class="profile-section">
+            <div class="section-header">
+              <h3><i class="fas fa-cog"></i> Settings</h3>
+            </div>
+            <div class="section-content">
+              <div class="settings-grid">
+                <div class="setting-item">
+                  <label>Email Notifications</label>
+                  <div class="toggle-switch">
+                    <input type="checkbox" id="emailNotifications" checked>
+                    <span class="slider"></span>
+                  </div>
+                </div>
+                
+                <div class="setting-item">
+                  <label>SMS Notifications</label>
+                  <div class="toggle-switch">
+                    <input type="checkbox" id="smsNotifications">
+                    <span class="slider"></span>
+                  </div>
+                </div>
+                
+                <div class="setting-item">
+                  <label>Public Profile</label>
+                  <div class="toggle-switch">
+                    <input type="checkbox" id="publicProfile">
+                    <span class="slider"></span>
+                  </div>
+                </div>
+                
+                <div class="setting-item">
+                  <label>Two-Factor Authentication</label>
+                  <div class="toggle-switch">
+                    <input type="checkbox" id="twoFactorAuth">
+                    <span class="slider"></span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="setting-item">
+                <label>Language</label>
+                <select id="language" class="setting-select">
+                  <option value="en" selected>English</option>
+                  <option value="es">Español</option>
+                  <option value="fr">Français</option>
+                  <option value="ar">العربية</option>
+                </select>
+              </div>
+              
+              <div class="setting-item">
+                <label>Time Zone</label>
+                <select id="timezone" class="setting-select">
+                  <option value="UTC">UTC</option>
+                  <option value="EST">Eastern Time</option>
+                  <option value="CST">Central Time</option>
+                  <option value="MST">Mountain Time</option>
+                  <option value="PST">Pacific Time</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Save Changes Button -->
+        <div class="profile-actions-bottom">
+          <button class="save-btn" id="saveChangesBtn" style="display: none;">
+            <i class="fas fa-save"></i>
+            Save Changes
+          </button>
+          <button class="cancel-btn" id="cancelChangesBtn" style="display: none;">
+            <i class="fas fa-times"></i>
+            Cancel
+          </button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/profile.js"></script>
+</body>
+</html>

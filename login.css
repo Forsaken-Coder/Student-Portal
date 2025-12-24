@@ -1,0 +1,382 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+.login {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(125deg, #0f0c29, #302b63, #24243e);
+    background-size: 400% 400%;
+    animation: gradientBG 20s ease infinite;
+    overflow: hidden;
+    position: relative;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.login .left {
+    border: 2px;
+    width: 450px;
+    height: 400px;
+    margin-top: 20px;
+    background-color: #111629;
+    border-top-left-radius: 28px;
+    border-bottom-left-radius: 28px;
+    z-index: 1;
+}
+
+/* circle animations */
+.login .left .logo-circle {
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #1a2a6c, #4cc9f0);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    box-shadow: 0 0 25px rgba(76, 201, 240, 0.4);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.login .left .logo-circle i {
+    font-size: 48px;
+    color: white;
+}
+/* circle animations */
+
+.login .left .University-name {
+    text-align: center;
+    font-family: 'Segoe UI', 'Poppins', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: transparent;
+    background: linear-gradient(to right, #4cc9f0, #f72585);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.login .left .description {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 15px;
+    line-height: 1.6;
+    width: 70%;
+    text-align: center;
+    margin: 10px auto 0 auto;
+}
+
+.login .right {
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    margin-top: 20px;
+    background-color: #EEEEF1;
+    border-top-right-radius: 28px;
+    border-bottom-right-radius: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.right p {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a2a6c;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.input-field1, .input-field2 {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-field1 i, .input-field2 i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #1a2a6c;
+    font-size: 18px;
+    z-index: 2;
+}
+
+.input-field1 input, .input-field2 input {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 16px;
+    background: #fafafa;
+    transition: all 0.3s ease;
+    font-family: 'Segoe UI', 'Poppins', sans-serif;
+}
+
+.input-field1 input:focus, .input-field2 input:focus {
+    border-color: #4cc9f0;
+    box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.2);
+    outline: none;
+    background: #ffffff;
+}
+
+.input-field1 input::placeholder, .input-field2 input::placeholder {
+    color: #999;
+    font-size: 15px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #1a2a6c 0%, #4361ee 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Segoe UI', 'Poppins', sans-serif;
+    margin-top: 10px;
+}
+
+.login-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(26, 42, 108, 0.4);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+.login-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Loading spinner */
+.login-button.loading {
+    position: relative;
+    color: transparent;
+}
+
+.login-button.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+    to { transform: rotate(360deg); }
+}
+
+/* Success animation */
+.success-message {
+    color: #2ecc71 !important;
+    text-align: center;
+    font-weight: 600;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Design for login page*/
+@media (max-width: 1024px) {
+    .login {
+    flex-direction: column;
+    padding: 20px;
+    height: auto;
+    min-height: 100vh;
+    }
+    
+    .login .left,
+    .login .right {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 0;
+    border-radius: 28px;
+    margin-bottom: 20px;
+    }
+    
+    .login .left {
+    height: auto;
+    padding: 40px 20px;
+    border-top-right-radius: 28px;
+    border-bottom-left-radius: 0;
+    }
+    
+    .login .right {
+    height: auto;
+    border-top-left-radius: 28px;
+    border-bottom-right-radius: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .login {
+    padding: 15px;
+    }
+    
+    .login .left,
+    .login .right {
+    max-width: 100%;
+    margin-bottom: 15px;
+    }
+    
+    .login .left .logo-circle {
+    width: 80px;
+    height: 80px;
+    }
+    
+    .login .left .logo-circle i {
+    font-size: 36px;
+    }
+    
+    .login .left .University-name {
+    font-size: 24px;
+    }
+    
+    .login .left .description {
+    font-size: 14px;
+    width: 85%;
+    }
+    
+    .right p {
+    font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login {
+    padding: 10px;
+    }
+    
+    .login .left,
+    .login .right {
+    margin-bottom: 10px;
+    padding: 30px 20px;
+    }
+    
+    .login .left .logo-circle {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 20px;
+    }
+    
+    .login .left .logo-circle i {
+    font-size: 32px;
+    }
+    
+    .login .left .University-name {
+    font-size: 22px;
+    }
+    
+    .login .left .description {
+    font-size: 13px;
+    width: 90%;
+    }
+    
+    .right p {
+    font-size: 22px;
+    }
+    
+    .input-field1 input, 
+    .input-field2 input {
+    padding: 12px 12px 12px 40px;
+    font-size: 15px;
+    }
+    
+    .login-button {
+    padding: 14px;
+    font-size: 16px;
+    }
+}
+
+@media (max-width: 320px) {
+    .login .left,
+    .login .right {
+    padding: 25px 15px;
+    }
+    
+    .login .left .logo-circle {
+    width: 60px;
+    height: 60px;
+    }
+    
+    .login .left .logo-circle i {
+    font-size: 28px;
+    }
+    
+    .login .left .University-name {
+    font-size: 20px;
+    }
+    
+    .login .left .description {
+    font-size: 12px;
+    }
+    
+    .right p {
+    font-size: 20px;
+    }
+    
+    .input-field1 input, 
+    .input-field2 input {
+    padding: 10px 10px 10px 35px;
+    font-size: 14px;
+    }
+    
+    .input-field1 i, 
+    .input-field2 i {
+    font-size: 16px;
+    left: 12px;
+    }
+    
+    .login-button {
+    padding: 12px;
+    font-size: 15px;
+    }
+}
+/* Responsive Design for login page*/
+
+    /* ===== PARTICLES ===== */
+#particles-js {
+    position: fixed; 
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0; 
+    background: transparent;
+}

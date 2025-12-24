@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" id="themeRoot">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Course Registration - Nexor University</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/registration.css">
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="gradient-bg"></div>
+  <div id="particles-js"></div>
+
+  <!-- Main Container -->
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <i class="fas fa-graduation-cap"></i>
+          <span class="logo-text">Nexor<span class="logo-highlight">Portal</span></span>
+        </div>
+        <div class="user-mini-profile">
+          <div class="mini-avatar" id="miniAvatar">A</div>
+          <div class="mini-info">
+            <span class="mini-name" id="miniName">Ali Ahmed</span>
+            <span class="mini-roll" id="miniRoll">23FA-003-SE</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item" title="Dashboard">
+          <i class="fas fa-chart-pie"></i>
+          <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="registration.html" class="nav-item active" title="Registration">
+          <i class="fas fa-book-open"></i>
+          <span class="nav-text">Registration</span>
+        </a>
+        <a href="courses.html" class="nav-item" title="Courses">
+          <i class="fas fa-book"></i>
+          <span class="nav-text">Courses</span>
+        </a>
+        <a href="timetable.html" class="nav-item" title="Schedule">
+          <i class="fas fa-calendar-alt"></i>
+          <span class="nav-text">Schedule</span>
+        </a>
+        <a href="#" class="nav-item" title="Assignments">
+          <i class="fas fa-file-alt"></i>
+          <span class="nav-text">Assignments</span>
+        </a>
+        <a href="#" class="nav-item" title="Performance">
+          <i class="fas fa-chart-line"></i>
+          <span class="nav-text">Performance</span>
+        </a>
+        <a href="#" class="nav-item" title="Finance">
+          <i class="fas fa-university"></i>
+          <span class="nav-text">Finance</span>
+        </a>
+        <a href="profile.html" class="nav-item" title="Profile">
+          <i class="fas fa-cog"></i>
+          <span class="nav-text">Profile</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="toggleSidebar" class="toggle-btn" title="Collapse Sidebar">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="main-header">
+        <div class="header-left">
+          <button id="mobileToggle" class="mobile-toggle" title="Toggle Menu">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="header-title">
+            <h1>Course Registration</h1>
+            <p class="header-subtitle" id="currentDateTime">Loading...</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="header-actions">
+            <button class="header-btn theme-toggle" id="themeToggle" title="Toggle Theme">
+              <i class="fas fa-moon"></i>
+            </button>
+            
+            <div class="user-dropdown">
+              <div class="user-profile" id="userProfile">
+                <div class="avatar">
+                  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ali" alt="Avatar" id="avatarImage">
+                </div>
+                <div class="user-details">
+                  <span class="user-name" id="userName">Ali Ahmed</span>
+                  <span class="user-role">Student</span>
+                </div>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="dropdown-menu">
+                <a href="/profile"><i class="fas fa-user"></i> My Profile</a>
+                <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                <a href="#"><i class="fas fa-question-circle"></i> Help</a>
+                <div class="dropdown-divider"></div>
+                <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Registration Status -->
+      <div class="registration-status">
+        <div class="status-card">
+          <div class="status-icon">
+            <i class="fas fa-credit-card"></i>
+          </div>
+          <div class="status-content">
+            <h3>Current Credits</h3>
+            <div class="status-value" id="currentCredits">18</div>
+            <div class="status-max">/ 21 max</div>
+          </div>
+        </div>
+        
+        <div class="status-card">
+          <div class="status-icon">
+            <i class="fas fa-book-open"></i>
+          </div>
+          <div class="status-content">
+            <h3>Registered Courses</h3>
+            <div class="status-value" id="registeredCourses">6</div>
+            <div class="status-max">courses this semester</div>
+          </div>
+        </div>
+        
+        <div class="status-card">
+          <div class="status-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="status-content">
+            <h3>Registration Period</h3>
+            <div class="status-value" id="registrationPeriod">Open</div>
+            <div class="status-max">Closes Dec 25, 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filters and Search -->
+      <div class="filters-section">
+        <div class="filter-controls">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="courseSearch" placeholder="Search courses...">
+          </div>
+          
+          <select id="departmentFilter" class="filter-select">
+            <option value="">All Departments</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Electrical Engineering">Electrical Engineering</option>
+            <option value="Business Administration">Business Administration</option>
+            <option value="Mathematics">Mathematics</option>
+            <option value="Physics">Physics</option>
+          </select>
+          
+          <select id="semesterFilter" class="filter-select">
+            <option value="">All Semesters</option>
+            <option value="1">Semester 1</option>
+            <option value="2">Semester 2</option>
+            <option value="3">Semester 3</option>
+            <option value="4">Semester 4</option>
+            <option value="5">Semester 5</option>
+            <option value="6">Semester 6</option>
+            <option value="7">Semester 7</option>
+            <option value="8">Semester 8</option>
+          </select>
+          
+          <select id="typeFilter" class="filter-select">
+            <option value="">All Types</option>
+            <option value="CORE">Core Courses</option>
+            <option value="ELECTIVE">Elective Courses</option>
+            <option value="LAB">Lab Courses</option>
+            <option value="SEMINAR">Seminar</option>
+          </select>
+        </div>
+        
+        <div class="view-options">
+          <button class="view-btn active" id="gridView" title="Grid View">
+            <i class="fas fa-th"></i>
+          </button>
+          <button class="view-btn" id="listView" title="List View">
+            <i class="fas fa-list"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Course Grid -->
+      <div class="courses-container" id="coursesContainer">
+        <div class="loading-spinner" id="loadingSpinner">
+          <i class="fas fa-spinner fa-spin"></i>
+          <p>Loading courses...</p>
+        </div>
+      </div>
+
+      <!-- Registration Summary -->
+      <div class="registration-summary" id="registrationSummary" style="display: none;">
+        <div class="summary-header">
+          <h3><i class="fas fa-shopping-cart"></i> Registration Summary</h3>
+          <button class="clear-btn" id="clearSelection">Clear All</button>
+        </div>
+        <div class="summary-content">
+          <div class="summary-info">
+            <div class="summary-item">
+              <span class="summary-label">Selected Courses:</span>
+              <span class="summary-value" id="selectedCount">0</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Total Credits:</span>
+              <span class="summary-value" id="totalCredits">0</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Available Credits:</span>
+              <span class="summary-value" id="availableCredits">21</span>
+            </div>
+          </div>
+          <button class="register-btn" id="confirmRegistration">
+            <i class="fas fa-check"></i>
+            Register for Selected Courses
+          </button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Course Details Modal -->
+  <div class="course-modal" id="courseModal">
+    <div class="modal-overlay"></div>
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 id="modalCourseTitle">Course Details</h3>
+        <button class="close-modal" id="closeModal">&times;</button>
+      </div>
+      <div class="modal-content" id="modalContent">
+        <!-- Content will be populated dynamically -->
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn secondary" id="closeModalBtn">Close</button>
+        <button class="modal-btn primary" id="addToRegistrationBtn">
+          <i class="fas fa-plus"></i>
+          Add to Registration
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/registration.js"></script>
+</body>
+</html>
